@@ -16,7 +16,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/")
+    @GetMapping
     public List<UserDto> getUsers() {
         return userService.findAllUsers();
     }
@@ -30,6 +30,11 @@ public class UserController {
     @PostMapping
     public void saveUser(@RequestBody UserDto user) {
         userService.saveUser(user);
+    }
+
+    @PutMapping
+    public void updateUser(@RequestBody UserDto user) {
+        userService.updateUser(user);
     }
 
     @DeleteMapping("/{userId}")
